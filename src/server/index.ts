@@ -5,6 +5,7 @@ import cors from "cors";
 import express from "express";
 import generalError from "./middlewares/errors/generalError.js";
 import endpointNotFound from "./middlewares/errors/endpointNotFound.js";
+import { pingRouter } from "../features/ping/router/pingRouter.js";
 
 app.use(morgan("dev"));
 
@@ -20,6 +21,6 @@ app.use(
     origin: corsWhitelist,
   }),
 );
-
+app.use("/", pingRouter);
 app.use(endpointNotFound);
 app.use(generalError);
