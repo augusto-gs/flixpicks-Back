@@ -1,14 +1,15 @@
+import "./endpointNotFound.js";
 import { type NextFunction, type Request, type Response } from "express";
 import type CustomError from "../../CustomError/CustomError.js";
 import debugCreator from "debug";
-import chalk from "chalk/index.js";
+import chalk from "chalk";
 
 const debug = debugCreator("movies:server:middlewares:errors");
 
 const generalError = (
   error: CustomError,
-  res: Response,
   _req: Request,
+  res: Response,
   _next: NextFunction,
 ) => {
   const statusCode = error.statusCode ?? 500;

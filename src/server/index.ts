@@ -1,8 +1,14 @@
+import "dotenv/config";
 import app from "./app.js";
 import morgan from "morgan";
 import cors from "cors";
+import express from "express";
+import generalError from "./middlewares/errors/generalError.js";
+import endpointNotFound from "./middlewares/errors/endpointNotFound.js";
 
 app.use(morgan("dev"));
+
+app.use(express.json());
 
 const corsWhitelist = [
   "https://augusto-gomez-202309-bcn-front.netlify.app/",
@@ -14,3 +20,6 @@ app.use(
     origin: corsWhitelist,
   }),
 );
+
+app.use(endpointNotFound);
+app.use(generalError);
