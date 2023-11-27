@@ -9,9 +9,9 @@
     "build": "tsc",
     "start": "node .",
     "start:dev": "node --watch .",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:dev": "jest --watchAll",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --passWithNoTests",
     "prepare": "husky install"
   },
   "keywords": [],
