@@ -4,7 +4,7 @@ export interface MovieStructure {
   director: string;
   writer: string;
   stars: string[];
-  releaseDate: Date;
+  releaseDate: string;
   genre: string[];
   description: string;
   imageUrl: string;

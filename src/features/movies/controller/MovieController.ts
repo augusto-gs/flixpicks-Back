@@ -6,6 +6,7 @@ class MovieController {
 
   getMovies = async (_req: Request, res: Response): Promise<void> => {
     const movies = await this.moviesRepository.getMovies();
+
     res.status(200).json({ movies });
   };
 }

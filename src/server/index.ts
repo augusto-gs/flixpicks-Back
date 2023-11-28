@@ -22,6 +22,7 @@ app.use(
     origin: corsWhitelist,
   }),
 );
+
 app.use("/", pingRouter);
 
 app.use("/movies", moviesRouter);

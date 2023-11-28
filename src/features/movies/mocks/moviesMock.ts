@@ -1,4 +1,6 @@
-export const moviesMock = [
+import { type MovieStructure } from "../types";
+
+export const moviesMock: MovieStructure[] = [
   {
     _id: "65637a12d4b93a3787b660f6",
     name: "La La Land",
@@ -12,6 +14,7 @@ export const moviesMock = [
     imageUrl: "https://i.ibb.co/bNxz5yJ/La-la-land.webp",
   },
   {
+    _id: "65637a12d4b93a3787b660f7",
     name: "Arrival",
     director: "Denis Villeneuve",
     writer: "Eric Heisserer",

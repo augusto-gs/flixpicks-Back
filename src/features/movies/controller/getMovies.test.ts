@@ -15,7 +15,7 @@ describe("Given a MovieController", () => {
     };
     const movieController = new MovieController(moviesRepository);
 
-    test("Then it should call its status method with a 200", async () => {
+    test("Then it should call its status method with a 200 status code", async () => {
       const expectedStatusCode = 200;
 
       await movieController.getMovies(req as Request, res as Response);
