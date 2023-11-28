@@ -10,7 +10,7 @@ const debug = debugCreator("movies:index");
 const port = process.env.PORT ?? 4000;
 
 if (!process.env.MONGODB_URL) {
-  debug(chalk.bgRedBright("Missing MongoDV Connection String"));
+  debug(chalk.bgRedBright("Missing MongoDB Connection String"));
   process.exit();
 }
 
