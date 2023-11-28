@@ -3,13 +3,9 @@ import { type MovieStructure, type MovieRepositoryStructure } from "../types";
 
 class MovieMongooseRepository implements MovieRepositoryStructure {
   async getMovies(): Promise<MovieStructure[]> {
-    try {
-      const movies = await Movie.find();
+    const movies = await Movie.find().limit(10);
 
-      return movies;
-    } catch {
-      throw new Error("Movies have not been found");
-    }
+    return movies;
   }
 }
 
