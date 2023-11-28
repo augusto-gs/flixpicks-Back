@@ -3,8 +3,6 @@ import "./server/index.js";
 import MongoMemoryServer from "mongodb-memory-server-core";
 import { connectToDatabase } from "./database";
 import mongoose from "mongoose";
-import Movie from "./features/movies/model/Movies.js";
-import { moviesMock } from "./features/movies/mocks/moviesMock.js";
 
 let server: MongoMemoryServer;
 
