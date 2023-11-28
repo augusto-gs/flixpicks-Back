@@ -1,4 +1,4 @@
-import Movie from "../model/Movies";
+import Movie from "../model/Movies.js";
 import { type MovieStructure, type MovieRepositoryStructure } from "../types";
 
 class MovieMongooseRepository implements MovieRepositoryStructure {
