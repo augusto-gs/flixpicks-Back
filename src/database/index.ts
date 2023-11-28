@@ -2,7 +2,7 @@ import chalk from "chalk";
 import debugCreator from "debug";
 import mongoose from "mongoose";
 
-const debug = debugCreator("movies:src:database");
+export const debug = debugCreator("movies:src:database");
 
 export const connectToDatabase = async (mongoUrl: string) => {
   try {
