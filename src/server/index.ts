@@ -14,7 +14,7 @@ app.use(express.json());
 
 const corsWhitelist = [
   "https://augusto-gomez-202309-bcn-front.netlify.app/",
-  `http://localhost:${process.env.PORT}/`,
+  `http://localhost:${process.env.PORT}`,
 ];
 
 app.use(
