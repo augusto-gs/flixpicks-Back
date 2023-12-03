@@ -1,12 +1,13 @@
 import { type Request, type Response } from "express";
-import { type MovieRepositoryStructure } from "../types";
-import MovieController from "./MovieController";
-import { moviesMock } from "../mocks/moviesMock";
+import { type MovieRepositoryStructure } from "../../types";
+import MovieController from "../MovieController";
+import { moviesMock } from "../../mocks/moviesMock";
 
 describe("Given a MovieController", () => {
   describe("When it receives a response", () => {
     const moviesRepository: MovieRepositoryStructure = {
       getMovies: jest.fn().mockResolvedValue(moviesMock),
+      deleteMovie: jest.fn(),
     };
     const req = {};
     const res: Pick<Response, "status" | "json"> = {
