@@ -7,6 +7,14 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
 
     return movies;
   }
+
+  async deleteMovie(movieId: string): Promise<void> {
+    try {
+      await Movie.findByIdAndDelete(movieId);
+    } catch (error) {
+      throw new Error("Error deleting the movie" + (error as Error).message);
+    }
+  }
 }
 
 export default MovieMongooseRepository;
