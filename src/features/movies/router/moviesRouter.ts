@@ -8,3 +8,4 @@ const movieRepository = new MovieMongooseRepository();
 const moviesController = new MovieController(movieRepository);
 
 moviesRouter.get("/", moviesController.getMovies);
+moviesRouter.delete("/:movieId", moviesController.deleteMovie);
