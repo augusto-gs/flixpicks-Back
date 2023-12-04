@@ -1,6 +1,6 @@
-import "../../../server/index";
+import "../../../../server/index";
 import request from "supertest";
-import app from "../../../server/app";
+import app from "../../../../server/app";
 
 describe("Given a DELETE method to a /movies:movieId path", () => {
   describe("When it receives a request with a correct movie id", () => {

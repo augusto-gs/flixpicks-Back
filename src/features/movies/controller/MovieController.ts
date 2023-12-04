@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import type MovieMongooseRepository from "../repository/MoviesMongooseRepository";
 import CustomError from "../../../server/CustomError/CustomError.js";
-import { type MovieRequestWithoutId, type MovieWithoutId } from "../types";
+import { type MovieRequestWithoutId } from "../types";
 
 class MovieController {
   constructor(public moviesRepository: MovieMongooseRepository) {}
