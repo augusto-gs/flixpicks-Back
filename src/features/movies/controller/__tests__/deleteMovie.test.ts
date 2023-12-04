@@ -24,6 +24,7 @@ describe("Given a MovieController with a deleteMovie method", () => {
     const moviesRepository: MovieMongooseRepository = {
       deleteMovie: jest.fn(),
       getMovies: jest.fn(),
+      addMovie: jest.fn(),
     };
 
     test("Then it should call the response's status method with a 200", async () => {
@@ -58,6 +59,7 @@ describe("Given a MovieController with a deleteMovie method", () => {
       const moviesRepository: MovieMongooseRepository = {
         deleteMovie: jest.fn().mockRejectedValue(null),
         getMovies: jest.fn(),
+        addMovie: jest.fn(),
       };
 
       const movieController = new MovieController(moviesRepository);

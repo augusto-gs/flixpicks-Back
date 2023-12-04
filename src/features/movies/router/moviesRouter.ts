@@ -9,3 +9,4 @@ const moviesController = new MovieController(movieRepository);
 
 moviesRouter.get("/", moviesController.getMovies);
 moviesRouter.delete("/:movieId", moviesController.deleteMovie);
+moviesRouter.post("/create", moviesController.addMovie);

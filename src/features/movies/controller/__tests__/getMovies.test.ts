@@ -8,6 +8,7 @@ describe("Given a MovieController", () => {
     const moviesRepository: MovieRepositoryStructure = {
       getMovies: jest.fn().mockResolvedValue(moviesMock),
       deleteMovie: jest.fn(),
+      addMovie: jest.fn(),
     };
     const req = {};
     const res: Pick<Response, "status" | "json"> = {
