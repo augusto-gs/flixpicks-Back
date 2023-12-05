@@ -1,9 +1,9 @@
-import "../../../server/index";
-import app from "../../../server/app";
+import "../../../../server/index";
+import app from "../../../../server/app";
 import request from "supertest";
-import { type MovieStructure } from "../types";
-import { moviesMock } from "../mocks/moviesMock";
-import Movie from "../model/Movies";
+import { type MovieStructure } from "../../types";
+import { moviesMock } from "../../mocks/moviesMock";
+import Movie from "../../model/Movies";
 
 describe("Given a GET/movies path", () => {
   describe("When it receives a request", () => {
