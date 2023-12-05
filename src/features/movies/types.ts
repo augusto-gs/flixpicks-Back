@@ -13,6 +13,8 @@ export interface MovieWithoutId {
   genre: string[];
   description: string;
   imageUrl: string;
+  score: string;
+  isSeen: boolean;
 }
 
 export interface MovieRepositoryStructure {
