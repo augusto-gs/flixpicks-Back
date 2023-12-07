@@ -21,6 +21,7 @@ export interface MovieRepositoryStructure {
   getMovies: () => Promise<MovieStructure[]>;
   deleteMovie: (id: string) => Promise<void>;
   addMovie: (movie: MovieWithoutId) => Promise<MovieStructure>;
+  getMovieById: (id: string) => Promise<MovieStructure>;
 }
 
 export type MovieRequestWithoutId = Request<
