@@ -18,11 +18,14 @@ class MovieController {
     next: NextFunction,
   ): Promise<void> => {
     const { movieId } = req.params;
+
     try {
       await this.moviesRepository.deleteMovie(movieId);
+
       res.status(200).json({});
     } catch {
       const error = new CustomError("Couldn't delete movie", 400);
+
       next(error);
     }
   };

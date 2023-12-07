@@ -2,7 +2,8 @@ import request from "supertest";
 import app from "../../../../server/app";
 import "../../../../server/index";
 import movieMock from "../../mocks/movieMock";
-import { MovieWithoutId, type MovieStructure } from "../../types";
+import { type MovieStructure } from "../../types";
+import { server } from "../../../../setupTests";
 
 describe("Given a POST method to a /movies/create endpoint", () => {
   const path = "/movies/create";
@@ -22,14 +23,34 @@ describe("Given a POST method to a /movies/create endpoint", () => {
     });
   });
 
+  describe("When it receices a request with a movie Arrival and the data base fails", () => {
+    test("Then it should respond with an error", async () => {
+      await server.stop();
+
+      const expectedStatusCode = 400;
+      const expectedError = {
+        error: "Couldn't add movie",
+      };
+
+      const response = await request(app)
+        .post(path)
+        .send(movieMock)
+        .expect(expectedStatusCode);
+
+      const responseBody = response.body as { movie: MovieStructure };
+
+      expect(responseBody).toStrictEqual(expectedError);
+    });
+  });
+
   describe("When it receives a request with a Movie with a genre as string", () => {
     test("Then it should respond with a 400 and a 'genre must be an array' message", async () => {
       const expectedStatus = 400;
       const expectedError = {
-        error: "genre must be an array",
+        error: "genre must be a string",
       };
 
-      const newMovie = { ...movieMock, genre: "Musical" };
+      const newMovie = { ...movieMock, genre: 3 };
 
       const response = await request(app)
         .post(path)
