@@ -4,7 +4,7 @@ import MongoMemoryServer from "mongodb-memory-server-core";
 import { connectToDatabase } from "./database";
 import mongoose from "mongoose";
 
-let server: MongoMemoryServer;
+export let server: MongoMemoryServer;
 
 beforeAll(async () => {
   server = await MongoMemoryServer.create();

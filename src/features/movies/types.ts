@@ -8,9 +8,9 @@ export interface MovieWithoutId {
   name: string;
   director: string;
   writer: string;
-  stars: string[];
+  stars: string;
   releaseDate: string;
-  genre: string[];
+  genre: string;
   description: string;
   imageUrl: string;
   score: string;
