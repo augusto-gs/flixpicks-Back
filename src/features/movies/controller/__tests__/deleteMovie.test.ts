@@ -21,16 +21,16 @@ describe("Given a MovieController with a deleteMovie method", () => {
   const next: NextFunction = jest.fn();
 
   describe("When it receives a request with a correct movie id and response", () => {
-    const moviesRepository: MovieMongooseRepository = {
+    const moviesRepository: Pick<MovieMongooseRepository, "deleteMovie"> = {
       deleteMovie: jest.fn(),
-      getMovies: jest.fn(),
-      addMovie: jest.fn(),
     };
 
     test("Then it should call the response's status method with a 200", async () => {
       const expectedStatusCode = 200;
 
-      const moviesController = new MovieController(moviesRepository);
+      const moviesController = new MovieController(
+        moviesRepository as MovieMongooseRepository,
+      );
 
       await moviesController.deleteMovie(
         req as MovieRequestById,
@@ -42,7 +42,9 @@ describe("Given a MovieController with a deleteMovie method", () => {
     });
 
     test("Then it should call the response's metod status json with an {}", async () => {
-      const moviesController = new MovieController(moviesRepository);
+      const moviesController = new MovieController(
+        moviesRepository as MovieMongooseRepository,
+      );
 
       await moviesController.deleteMovie(
         req as MovieRequestById,
@@ -56,13 +58,13 @@ describe("Given a MovieController with a deleteMovie method", () => {
 
   describe("When it receives a request with an incorrect movie id and response", () => {
     test("Then it should call its next function with a custom error", async () => {
-      const moviesRepository: MovieMongooseRepository = {
+      const moviesRepository: Pick<MovieMongooseRepository, "deleteMovie"> = {
         deleteMovie: jest.fn().mockRejectedValue(null),
-        getMovies: jest.fn(),
-        addMovie: jest.fn(),
       };
 
-      const movieController = new MovieController(moviesRepository);
+      const movieController = new MovieController(
+        moviesRepository as MovieMongooseRepository,
+      );
 
       await movieController.deleteMovie(
         req as MovieRequestById,

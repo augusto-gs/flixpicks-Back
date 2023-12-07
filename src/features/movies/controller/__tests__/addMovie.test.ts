@@ -20,17 +20,17 @@ describe("Given a MovieController controller with a addMovie method", () => {
       json: jest.fn().mockReturnThis(),
     };
 
-    const movieRepository: MovieMongooseRepository = {
+    const movieRepository: Pick<MovieMongooseRepository, "addMovie"> = {
       addMovie: jest.fn().mockResolvedValue({ movieMock }),
-      deleteMovie: jest.fn(),
-      getMovies: jest.fn(),
     };
 
     const next: NextFunction = jest.fn();
 
     test("Then it should call the status method of the response with a 201 status code", async () => {
       const expectedStatusCode = 201;
-      const movieController = new MovieController(movieRepository);
+      const movieController = new MovieController(
+        movieRepository as MovieMongooseRepository,
+      );
 
       await movieController.addMovie(
         req as MovieRequestWithoutId,
@@ -42,7 +42,9 @@ describe("Given a MovieController controller with a addMovie method", () => {
     });
 
     test("Then it should call the json method of the response with a La La Land movie", async () => {
-      const movieController = new MovieController(movieRepository);
+      const movieController = new MovieController(
+        movieRepository as MovieMongooseRepository,
+      );
 
       await movieController.addMovie(
         req as MovieRequestWithoutId,
@@ -54,10 +56,8 @@ describe("Given a MovieController controller with a addMovie method", () => {
     });
 
     test("Then it should call the next function with an error status 400 and a 'Couldn't add movie' error message", async () => {
-      const movieRepository: MovieMongooseRepository = {
+      const movieRepository: Pick<MovieMongooseRepository, "addMovie"> = {
         addMovie: jest.fn().mockRejectedValue(null),
-        deleteMovie: jest.fn(),
-        getMovies: jest.fn(),
       };
 
       const expectedError: Partial<CustomError> = {
@@ -65,7 +65,9 @@ describe("Given a MovieController controller with a addMovie method", () => {
         statusCode: 400,
       };
 
-      const movieController = new MovieController(movieRepository);
+      const movieController = new MovieController(
+        movieRepository as MovieMongooseRepository,
+      );
 
       await movieController.addMovie(
         req as MovieRequestWithoutId,

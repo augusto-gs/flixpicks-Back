@@ -5,17 +5,17 @@ import { moviesMock } from "../../mocks/moviesMock";
 
 describe("Given a MovieController", () => {
   describe("When it receives a response", () => {
-    const moviesRepository: MovieRepositoryStructure = {
+    const moviesRepository: Pick<MovieRepositoryStructure, "getMovies"> = {
       getMovies: jest.fn().mockResolvedValue(moviesMock),
-      deleteMovie: jest.fn(),
-      addMovie: jest.fn(),
     };
     const req = {};
     const res: Pick<Response, "status" | "json"> = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn().mockReturnThis(),
     };
-    const movieController = new MovieController(moviesRepository);
+    const movieController = new MovieController(
+      moviesRepository as MovieRepositoryStructure,
+    );
 
     test("Then it should call its status method with a 200 status code", async () => {
       const expectedStatusCode = 200;
