@@ -33,6 +33,7 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
   async getMovieById(id: string): Promise<MovieStructure> {
     try {
       const movie = await Movie.findById(id);
+
       return movie!;
     } catch (error) {
       throw new Error("Error finding movie" + (error as Error).message);

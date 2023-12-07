@@ -47,6 +47,24 @@ class MovieController {
       next(customError);
     }
   };
+
+  getMovieById = async (
+    req: Request<{ movieId: string }>,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const { movieId } = req.params;
+
+      const movie = await this.moviesRepository.getMovieById(movieId);
+
+      res.status(200).json(movie);
+    } catch {
+      const customError = new CustomError("Couldn't find movie", 400);
+
+      next(customError);
+    }
+  };
 }
 
 export default MovieController;
