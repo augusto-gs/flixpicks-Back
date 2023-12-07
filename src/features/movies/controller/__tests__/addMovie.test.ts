@@ -42,7 +42,9 @@ describe("Given a MovieController controller with a addMovie method", () => {
     });
 
     test("Then it should call the json method of the response with a La La Land movie", async () => {
-      const movieController = new MovieController(movieRepository);
+      const movieController = new MovieController(
+        movieRepository as MovieMongooseRepository,
+      );
 
       await movieController.addMovie(
         req as MovieRequestWithoutId,
