@@ -11,6 +11,7 @@ describe("Given a POST method to a /movies/create endpoint", () => {
   describe("When it receives a request with a movie Arrival", () => {
     test("Then it should respond with a 201 and a movie Arrival with ID", async () => {
       const expectedStatusCode = 201;
+      const expectedMovieName = "La La Land";
 
       const response = await request(app)
         .post(path)
@@ -19,7 +20,7 @@ describe("Given a POST method to a /movies/create endpoint", () => {
 
       const responseBody = response.body as { movie: MovieStructure };
 
-      expect(responseBody.movie).toHaveProperty("name", "La La Land");
+      expect(responseBody.movie).toHaveProperty("name", expectedMovieName);
     });
   });
 
