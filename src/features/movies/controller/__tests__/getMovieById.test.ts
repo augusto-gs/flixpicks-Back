@@ -6,6 +6,10 @@ import type MovieMongooseRepository from "../../repository/MoviesMongooseReposit
 import movieMock from "../../mocks/movieMock";
 import type CustomError from "../../../../server/CustomError/CustomError";
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("Given a MovieController with a getMovieById", () => {
   const req: Pick<MovieRequestById, "params"> = {
     params: { movieId: "1234" },
@@ -50,7 +54,7 @@ describe("Given a MovieController with a getMovieById", () => {
         next,
       );
 
-      expect(res.json).toHaveBeenCalledWith(movieMock);
+      expect(res.json).toHaveBeenCalledWith({ movie: movieMock });
     });
   });
 

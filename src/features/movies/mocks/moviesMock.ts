@@ -29,4 +29,18 @@ export const moviesMock: MovieStructure[] = [
     score: "3.5",
     isSeen: false,
   },
+  {
+    _id: "65637a12d4b93a3787b660fd",
+    name: "El Secreto de Sus Ojos",
+    director: "Juan José Campanella",
+    writer: "Eduardo Sacheri, Juan José Campanella",
+    stars: "Ricardo Darín, Soledad Villamil",
+    releaseDate: "2009-08-13",
+    genre: "Drama, Mystery, Romance",
+    description:
+      "A retired legal counselor revisits a cold case involving a brutal rape and murder.",
+    imageUrl: "https://i.ibb.co/m9jcvz4/El-secreto-de-sus-ojos.webp",
+    score: "2.9",
+    isSeen: false,
+  },
 ];

@@ -56,9 +56,9 @@ class MovieController {
     try {
       const { movieId } = req.params;
 
-      const movie = await this.moviesRepository.getMovieById(movieId);
+      const movie = await this.moviesRepository.getMovieById(movieId)!;
 
-      res.status(200).json(movie);
+      res.status(200).json({ movie });
     } catch {
       const customError = new CustomError("Couldn't find movie", 400);
 

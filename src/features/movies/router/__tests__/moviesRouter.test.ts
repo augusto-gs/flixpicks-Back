@@ -16,6 +16,7 @@ describe("Given a GET/movies path", () => {
 
       await Movie.create(moviesMock[0]);
       await Movie.create(moviesMock[1]);
+      await Movie.create(moviesMock[2]);
 
       const responseBody = response.body as { movies: MovieStructure[] };
 
