@@ -1,7 +1,10 @@
 import { Router } from "express";
 import MovieMongooseRepository from "../repository/MoviesMongooseRepository.js";
 import MovieController from "../controller/MovieController.js";
-import movieValidation from "../schema/movieSchema.js";
+import {
+  movieValidation,
+  movieWithIdValidation,
+} from "../schema/movieSchema.js";
 
 export const moviesRouter = Router();
 
@@ -12,3 +15,8 @@ moviesRouter.get("/", moviesController.getMovies);
 moviesRouter.delete("/:movieId", moviesController.deleteMovie);
 moviesRouter.post("/create", movieValidation, moviesController.addMovie);
 moviesRouter.get("/:movieId", moviesController.getMovieById);
+moviesRouter.patch(
+  "/:movieId",
+  movieWithIdValidation,
+  moviesController.modifyMovie,
+);

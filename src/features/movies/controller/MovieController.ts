@@ -73,9 +73,10 @@ class MovieController {
   ): Promise<void> => {
     try {
       const movie = req.body;
+      const { movieId } = req.params;
 
       const modifiedMovie = await this.moviesRepository.modifyMovie(
-        movie._id,
+        movieId,
         movie,
       );
 
