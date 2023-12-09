@@ -2,7 +2,7 @@ import { type NextFunction, type Response } from "express";
 import { type MovieRequestWithoutId } from "../../types";
 import MovieController from "../MovieController";
 import type MovieMongooseRepository from "../../repository/MoviesMongooseRepository";
-import movieMock from "../../mocks/movieMock";
+import { movieMock } from "../../mocks/movieMock";
 import type CustomError from "../../../../server/CustomError/CustomError";
 
 afterEach(() => {

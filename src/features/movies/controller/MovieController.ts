@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import type MovieMongooseRepository from "../repository/MoviesMongooseRepository";
 import CustomError from "../../../server/CustomError/CustomError.js";
-import { type MovieRequestWithoutId } from "../types";
+import { type MovieRequestWithId, type MovieRequestWithoutId } from "../types";
 
 class MovieController {
   constructor(public moviesRepository: MovieMongooseRepository) {}
@@ -61,6 +61,27 @@ class MovieController {
       res.status(200).json({ movie });
     } catch {
       const customError = new CustomError("Couldn't find movie", 400);
+
+      next(customError);
+    }
+  };
+
+  modifyMovie = async (
+    req: MovieRequestWithId,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const movie = req.body;
+
+      const modifiedMovie = await this.moviesRepository.modifyMovie(
+        movie._id,
+        movie,
+      );
+
+      res.status(200).json(modifiedMovie);
+    } catch {
+      const customError = new CustomError("Couldn't modify movie", 400);
 
       next(customError);
     }

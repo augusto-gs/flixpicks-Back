@@ -3,7 +3,7 @@ import { type MovieRequestById } from "../../types";
 import { type NextFunction } from "express";
 import MovieController from "../MovieController";
 import type MovieMongooseRepository from "../../repository/MoviesMongooseRepository";
-import movieMock from "../../mocks/movieMock";
+import { movieMock } from "../../mocks/movieMock";
 import type CustomError from "../../../../server/CustomError/CustomError";
 
 beforeEach(() => {

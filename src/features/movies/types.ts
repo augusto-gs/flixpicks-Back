@@ -28,6 +28,12 @@ export interface MovieRepositoryStructure {
   ) => Promise<MovieStructure | undefined>;
 }
 
+export type MovieRequestWithId = Request<
+  { movieId: string },
+  Record<string, unknown>,
+  MovieStructure
+>;
+
 export type MovieRequestWithoutId = Request<
   Record<string, unknown>,
   Record<string, unknown>,
