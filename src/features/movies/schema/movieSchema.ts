@@ -16,10 +16,8 @@ const movieSchema = {
   }),
 };
 
-const movieValidation = validate(
+export const movieValidation = validate(
   movieSchema,
   {},
   { abortEarly: false, dateFormat: "date" },
 );
-
-export default movieValidation;

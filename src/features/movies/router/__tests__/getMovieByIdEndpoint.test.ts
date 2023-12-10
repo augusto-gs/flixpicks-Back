@@ -1,7 +1,6 @@
 import request from "supertest";
 import app from "../../../../server/app";
 import { type MovieStructure } from "../../types";
-import "../../../../server/index";
 import Movie from "../../model/Movies";
 import { moviesMock } from "../../mocks/moviesMock";
 

@@ -1,7 +1,6 @@
 import request from "supertest";
 import app from "../../../../server/app";
-import "../../../../server/index";
-import movieMock from "../../mocks/movieMock";
+import { movieMock } from "../../mocks/movieMock";
 import { type MovieStructure } from "../../types";
 import { server } from "../../../../setupTests";
 

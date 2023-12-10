@@ -1,6 +1,6 @@
-import { type MovieWithoutId } from "../types";
+import { type MovieStructure, type MovieWithoutId } from "../types";
 
-const movieMock: MovieWithoutId = {
+export const movieMock: MovieWithoutId = {
   name: "La La Land",
   director: "Damien Chazelle",
   writer: "Damien Chazelle",
@@ -14,4 +14,13 @@ const movieMock: MovieWithoutId = {
   isSeen: false,
 };
 
-export default movieMock;
+export const movieMockWithId: MovieStructure = {
+  ...movieMock,
+  _id: "65637a12d4b93a3787b660f6",
+};
+
+export const modifiedMovieMock: MovieStructure = {
+  ...movieMock,
+  name: "Test",
+  _id: "65637a12d4b93a3787b660f6",
+};

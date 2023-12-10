@@ -59,6 +59,33 @@
         "url": "http://localhost:4000/movies/create"
       },
       "response": []
+    },
+    {
+      "name": "Get movie by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:4000/movies/65637a12d4b93a3787b660f6"
+      },
+      "response": []
+    },
+    {
+      "name": "Modify movie",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"_id\":\"65637a12d4b93a3787b660ff\",\r\n  \"name\": \"Avengers: Endgame\",\r\n  \"director\": \"Anthony Russo, Joe Russo\",\r\n  \"writer\": \"Christopher Markus, Stephen McFeely\",\r\n  \"stars\": \"Robert Downey Jr., Chris Hemsworth, Scarlett Johansson\",\r\n  \"releaseDate\": \"2018-04-27\",\r\n  \"genre\": \"Action, Adventure, Sci-Fi\",\r\n  \"description\": \"The Avengers and their allies must unite to stop the powerful Thanos from destroying the universe.\",\r\n  \"imageUrl\": \"https://i.ibb.co/QNfSyV8/avengers-infinity-war.webp\",\r\n  \"score\": \"4.7\",\r\n  \"isSeen\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "http://localhost:4000/movies/65637a12d4b93a3787b660ff"
+      },
+      "response": []
     }
   ]
 }
