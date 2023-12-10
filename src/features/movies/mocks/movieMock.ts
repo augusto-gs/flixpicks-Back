@@ -14,6 +14,11 @@ export const movieMock: MovieWithoutId = {
   isSeen: false,
 };
 
+export const movieMockWithId: MovieStructure = {
+  ...movieMock,
+  _id: "65637a12d4b93a3787b660f6",
+};
+
 export const modifiedMovieMock: MovieStructure = {
   ...movieMock,
   name: "Test",

@@ -45,7 +45,11 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
     movie: MovieStructure,
   ): Promise<MovieStructure | undefined> {
     try {
-      const modifiedMovie = await Movie.findByIdAndUpdate(id, { ...movie });
+      const modifiedMovie = await Movie.findByIdAndUpdate(
+        id,
+        { ...movie },
+        { returnDocument: "after" },
+      );
       return modifiedMovie!;
     } catch (error) {
       throw new Error("Error adding movie" + (error as Error).message);

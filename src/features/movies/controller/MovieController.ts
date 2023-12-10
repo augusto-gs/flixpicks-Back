@@ -80,8 +80,8 @@ class MovieController {
         movie,
       );
 
-      res.status(200).json(modifiedMovie);
-    } catch {
+      res.status(200).json({ movie: modifiedMovie });
+    } catch (error) {
       const customError = new CustomError("Couldn't modify movie", 400);
 
       next(customError);

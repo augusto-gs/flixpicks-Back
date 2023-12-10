@@ -3,8 +3,8 @@ import { type MovieRequestWithId } from "../../types";
 import { moviesMock } from "../../mocks/moviesMock";
 import MovieController from "../MovieController";
 import type MovieMongooseRepository from "../../repository/MoviesMongooseRepository";
-import { modifiedMovieMock } from "../../mocks/movieMock";
 import type CustomError from "../../../../server/CustomError/CustomError";
+import { modifiedMovieMock } from "../../mocks/movieMock";
 
 beforeEach(() => jest.clearAllMocks());
 
@@ -14,8 +14,9 @@ describe("Given a MovieController class with a modifyMovie method", () => {
     status: jest.fn().mockReturnThis(),
   };
 
-  const req: Pick<MovieRequestWithId, "body"> = {
+  const req: Pick<MovieRequestWithId, "body" | "params"> = {
     body: moviesMock[0],
+    params: { movieId: "65637a12d4b93a3787b660f6" },
   };
 
   const next: NextFunction = jest.fn();
@@ -51,7 +52,7 @@ describe("Given a MovieController class with a modifyMovie method", () => {
         next,
       );
 
-      expect(res.json).toHaveBeenCalledWith(modifiedMovieMock);
+      expect(res.json).toHaveBeenCalledWith({ movie: modifiedMovieMock });
     });
   });
 

@@ -1,4 +1,3 @@
-import "../../../../server/index";
 import app from "../../../../server/app";
 import request from "supertest";
 import { type MovieStructure } from "../../types";
