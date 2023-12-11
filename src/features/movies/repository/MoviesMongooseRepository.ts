@@ -7,7 +7,7 @@ import {
 
 class MovieMongooseRepository implements MovieRepositoryStructure {
   async getMovies(): Promise<MovieStructure[]> {
-    const movies = await Movie.find().limit(10);
+    const movies = await Movie.find().limit(10).sort({ _id: -1 });
 
     return movies;
   }
