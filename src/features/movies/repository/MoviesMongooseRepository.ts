@@ -61,7 +61,7 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
 
       return modifiedMovie;
     } catch (error) {
-      throw new Error("Error adding movie" + (error as Error).message);
+      throw new Error("Error modifying movie" + (error as Error).message);
     }
   }
 }

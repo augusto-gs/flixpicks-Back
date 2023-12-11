@@ -13,7 +13,7 @@ describe("Given a PATCH method to a /movies/:movieId endpoint", () => {
       await Movie.create(movieMockWithId);
 
       const response = await request(app)
-        .patch("/movies/65637a12d4b93a3787b660f6")
+        .put("/movies/65637a12d4b93a3787b660f6")
         .send(modifiedMovieMock)
         .expect(200);
 
@@ -30,7 +30,7 @@ describe("Given a PATCH method to a /movies/:movieId endpoint", () => {
       };
 
       const response = await request(app)
-        .patch("/movies/1234")
+        .put("/movies/1234")
         .send(modifiedMovieMock)
         .expect(expectedWrongStatusCode);
 
@@ -50,7 +50,7 @@ describe("Given a PATCH method to a /movies/:movieId endpoint", () => {
       };
 
       const response = await request(app)
-        .patch(path)
+        .put(path)
         .send(modifiedMovieMock)
         .expect(expectedWrongStatusCode);
 

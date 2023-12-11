@@ -11,6 +11,7 @@ const movieSchema = new Schema<MovieStructure>({
   stars: { type: String, required: true },
   writer: { type: String, required: true },
   score: { type: String },
+  isSeen: { type: Boolean },
 });
 
 const Movie = model("Movie", movieSchema, "movies");
