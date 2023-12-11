@@ -12,4 +12,4 @@ moviesRouter.get("/", moviesController.getMovies);
 moviesRouter.delete("/:movieId", moviesController.deleteMovie);
 moviesRouter.post("/create", movieValidation, moviesController.addMovie);
 moviesRouter.get("/:movieId", moviesController.getMovieById);
-moviesRouter.patch("/:movieId", moviesController.modifyMovie);
+moviesRouter.put("/:movieId", moviesController.modifyMovie);
