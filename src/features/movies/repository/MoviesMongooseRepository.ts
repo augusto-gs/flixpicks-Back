@@ -34,7 +34,11 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
     try {
       const movie = await Movie.findById(id);
 
-      return movie!;
+      if (!movie) {
+        throw new Error("Error finding movie");
+      }
+
+      return movie;
     } catch (error) {
       throw new Error("Error finding movie" + (error as Error).message);
     }
@@ -50,6 +54,7 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
         { ...movie },
         { returnDocument: "after" },
       );
+
       return modifiedMovie!;
     } catch (error) {
       throw new Error("Error adding movie" + (error as Error).message);
