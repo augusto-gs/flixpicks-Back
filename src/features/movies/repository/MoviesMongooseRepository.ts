@@ -55,7 +55,11 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
         { returnDocument: "after" },
       );
 
-      return modifiedMovie!;
+      if (!modifiedMovie) {
+        throw new Error("Movie has not been found");
+      }
+
+      return modifiedMovie;
     } catch (error) {
       throw new Error("Error adding movie" + (error as Error).message);
     }
