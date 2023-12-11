@@ -10,6 +10,7 @@ const movieSchema = new Schema<MovieStructure>({
   releaseDate: { type: String, required: true },
   stars: { type: String, required: true },
   writer: { type: String, required: true },
+  score: { type: String },
 });
 
 const Movie = model("Movie", movieSchema, "movies");

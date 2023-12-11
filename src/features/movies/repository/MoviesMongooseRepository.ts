@@ -7,7 +7,7 @@ import {
 
 class MovieMongooseRepository implements MovieRepositoryStructure {
   async getMovies(): Promise<MovieStructure[]> {
-    const movies = await Movie.find().limit(10);
+    const movies = await Movie.find().limit(10).sort({ _id: -1 });
 
     return movies;
   }
@@ -34,7 +34,11 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
     try {
       const movie = await Movie.findById(id);
 
-      return movie!;
+      if (!movie) {
+        throw new Error("Error finding movie");
+      }
+
+      return movie;
     } catch (error) {
       throw new Error("Error finding movie" + (error as Error).message);
     }
@@ -50,7 +54,12 @@ class MovieMongooseRepository implements MovieRepositoryStructure {
         { ...movie },
         { returnDocument: "after" },
       );
-      return modifiedMovie!;
+
+      if (!modifiedMovie) {
+        throw new Error("Movie has not been found");
+      }
+
+      return modifiedMovie;
     } catch (error) {
       throw new Error("Error adding movie" + (error as Error).message);
     }
