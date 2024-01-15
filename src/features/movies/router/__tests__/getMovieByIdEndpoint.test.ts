@@ -11,6 +11,7 @@ describe("Given a GET method to a /:movieId endpoint", () => {
   describe("When it receives a request with an id for La La Land", () => {
     test("Then it should respond with a 200 and a movie La La Land", async () => {
       await Movie.create(moviesMock[2]);
+
       const path = "/movies/65637a12d4b93a3787b660fd";
       const expectedStatusCode = 200;
 
