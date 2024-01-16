@@ -1,7 +1,7 @@
 import { type Request } from "express";
 
 export interface UserMongooseRepositoryStructure {
-  registerUser: (username: string, password: string) => string;
+  registerUser: (username: string, password: string) => Promise<string>;
 }
 
 export interface UserStructure {

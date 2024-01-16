@@ -1,11 +1,11 @@
-import User from "../model/User";
+import User from "../model/User.js";
 import bcrypt from "bcrypt";
 
 class UserMongooseRepository {
-  async registerUser(username: string, password: string) {
+  async registerUser(username: string, password: string): Promise<string> {
     try {
       const saltRounds = 10;
-      const hashedPassword = bcrypt.hash(password, saltRounds);
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
 
       const newUser = await User.create({ username, password: hashedPassword });
 
