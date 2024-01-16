@@ -7,6 +7,7 @@ import generalError from "./middlewares/errors/generalError.js";
 import endpointNotFound from "./middlewares/errors/endpointNotFound.js";
 import { pingRouter } from "../features/ping/router/pingRouter.js";
 import { moviesRouter } from "../features/movies/router/moviesRouter.js";
+import { userRouter } from "../features/user/router/userRouter.js";
 
 app.use(morgan("dev"));
 
@@ -23,6 +24,8 @@ app.use(
 app.use("/", pingRouter);
 
 app.use("/movies", moviesRouter);
+
+app.use("/user", userRouter);
 
 app.use(endpointNotFound);
 
