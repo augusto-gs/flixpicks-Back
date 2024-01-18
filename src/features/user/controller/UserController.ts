@@ -13,11 +13,12 @@ class UserController {
     res: Response,
     next: NextFunction,
   ): Promise<void> => {
-    const { username, password } = req.body;
+    const { username, password, name } = req.body;
     try {
       const newUser = await this.userRepository.registerUser(
         username,
         password,
+        name,
       );
 
       res.status(201).json({ user: newUser });
