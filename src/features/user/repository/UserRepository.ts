@@ -34,13 +34,15 @@ class UserMongooseRepository implements UserMongooseRepositoryStructure {
     try {
       const user = await User.findOne({ username });
 
-      await bcrypt.compare(userPassword, user!.password);
+      if (!(await bcrypt.compare(userPassword, user!.password))) {
+        throw new Error("Incorrect credentials");
+      }
 
       const { password, ...userWithoutPassword } = user!.toJSON();
 
       return userWithoutPassword;
     } catch (error) {
-      throw new Error("Error veryfing user" + (error as Error).message);
+      throw new Error("Error verifying user" + (error as Error).message);
     }
   }
 }

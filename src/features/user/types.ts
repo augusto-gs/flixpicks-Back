@@ -20,7 +20,7 @@ export interface UserStructure {
   password: string;
 }
 
-export type UserWithoutIdAndName = Pick<UserStructure, "name" | "password">;
+export type UserWithoutIdAndName = Pick<UserStructure, "username" | "password">;
 
 export type UserWithoutId = Omit<UserStructure, "_id">;
 
