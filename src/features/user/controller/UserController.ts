@@ -1,6 +1,5 @@
 import { type NextFunction, type Response } from "express";
-import { type JwtPayload } from "jsonwebtoken";
-import jwt from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 import {
   type UserRequestWithoutName,
   type UserMongooseRepositoryStructure,
