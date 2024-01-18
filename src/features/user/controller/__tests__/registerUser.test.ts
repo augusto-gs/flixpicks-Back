@@ -24,7 +24,7 @@ describe("Given a UserController class with a registerUser method", () => {
 
   const next: NextFunction = jest.fn();
 
-  describe("When it receives a request with a 'test' username and a 'test' password", () => {
+  describe("When it receives a request with a 'test' username and a 'test1234' password", () => {
     const expectedPath = 201;
 
     const userRepository: Partial<UserMongooseRepositoryStructure> = {
