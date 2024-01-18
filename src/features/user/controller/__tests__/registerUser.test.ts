@@ -6,6 +6,7 @@ import {
 } from "../../types";
 import UserController from "../UserController";
 import type CustomError from "../../../../server/CustomError/CustomError";
+import type UserMongooseRepository from "../../repository/UserRepository";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -23,15 +24,17 @@ describe("Given a UserController class with a registerUser method", () => {
 
   const next: NextFunction = jest.fn();
 
-  describe("When it receives a request with a 'test' username and a 'test' password", () => {
+  describe("When it receives a request with a 'test' username and a 'test1234' password", () => {
     const expectedPath = 201;
 
-    const userRepository: UserMongooseRepositoryStructure = {
+    const userRepository: Partial<UserMongooseRepositoryStructure> = {
       registerUser: jest.fn().mockReturnValue(userMock.username),
     };
 
     test("Then it should call the response method status with a 201", async () => {
-      const userController = new UserController(userRepository);
+      const userController = new UserController(
+        userRepository as UserMongooseRepository,
+      );
 
       await userController.registerUser(
         req as UserRequest,
@@ -43,7 +46,9 @@ describe("Given a UserController class with a registerUser method", () => {
     });
 
     test("Then it should call the response method json with a username test", async () => {
-      const userController = new UserController(userRepository);
+      const userController = new UserController(
+        userRepository as UserMongooseRepository,
+      );
 
       await userController.registerUser(
         req as UserRequest,
@@ -57,7 +62,7 @@ describe("Given a UserController class with a registerUser method", () => {
 
   describe("When it receives a request with an already existant username", () => {
     test("Then it should call its next function with a status code 401 and a 'Couldn't create user' message", async () => {
-      const userRepository: UserMongooseRepositoryStructure = {
+      const userRepository: Partial<UserMongooseRepositoryStructure> = {
         registerUser: jest.fn().mockRejectedValue("Error"),
       };
 
@@ -66,7 +71,9 @@ describe("Given a UserController class with a registerUser method", () => {
         statusCode: 401,
       };
 
-      const userController = new UserController(userRepository);
+      const userController = new UserController(
+        userRepository as UserMongooseRepository,
+      );
 
       await userController.registerUser(
         req as UserRequest,

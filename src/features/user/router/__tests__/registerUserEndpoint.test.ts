@@ -1,6 +1,7 @@
 import request from "supertest";
 import app from "../../../../server/app";
 import { userMock } from "../../mocks/userMock";
+import User from "../../model/User";
 
 describe("Given a POST method to a /user/register endpoint", () => {
   const path = "/user/register";
@@ -29,6 +30,8 @@ describe("Given a POST method to a /user/register endpoint", () => {
       const responseBody = response.body as { error: string };
 
       expect(responseBody.error).toContain(expectedErrorMessage);
+
+      await User.findByIdAndDelete();
     });
   });
 });
