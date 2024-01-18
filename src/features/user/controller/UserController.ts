@@ -1,5 +1,8 @@
 import { type NextFunction, type Response } from "express";
+import { type JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import {
+  type UserRequestWithoutName,
   type UserMongooseRepositoryStructure,
   type UserRequest,
 } from "../types";
@@ -30,6 +33,32 @@ class UserController {
       );
 
       next(customError);
+    }
+  };
+
+  loginUser = async (
+    req: UserRequestWithoutName,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      const { username, password } = req.body;
+
+      const { _id, name } = await this.userRepository.loginUser(
+        username,
+        password,
+      );
+
+      const userData: JwtPayload = { sub: _id, name };
+      const token = jwt.sign(userData, process.env.JWT_SECRET_KEY!, {
+        expiresIn: "30d",
+      });
+
+      res.status(200).json({ token });
+    } catch (error) {
+      const userError = new CustomError("Wrong credentials", 401);
+
+      next(userError);
     }
   };
 }
