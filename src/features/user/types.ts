@@ -26,10 +26,15 @@ export type UserWithoutId = Omit<UserStructure, "_id">;
 
 export type UserWithoutPassword = Omit<UserStructure, "password">;
 
+export interface UserCredentials {
+  username: string;
+  password: string;
+}
+
 export type UserRequestWithoutName = Request<
   Record<string, unknown>,
   Record<string, unknown>,
-  UserWithoutId
+  UserCredentials
 >;
 
 export type UserRequest = Request<
